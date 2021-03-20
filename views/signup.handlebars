@@ -1,0 +1,46 @@
+{{> header }}
+<div class="container ">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center"> Register Here</h4>
+            <!--Step 1:Adding HTML-->
+            <button class="signup-btn btn-lg" onclick="document.getElementById('id01').style.display='block'"
+                style="width:auto;">Sign
+                Up</button>
+
+            <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">×</span>
+                <form class="modal-content animate">
+                    <div class="container">
+                        <label><b>Full Name</b></label>
+                        <input type="text" placeholder="Enter Full Name" id="name-input" name="name" required>
+
+
+                        <label><b>Email</b></label>
+                        <input type="text" placeholder="Enter Email" id="email-input" name="email" required>
+
+                        <label><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" id="password-input" name="psw" required>
+
+                        <label><b>Phone Number</b></label>
+                        <input type="text" placeholder="Enter Phone Number" id="phoneNumber-input" name="phoneNumber"
+                            required>
+
+                        <label><b>Address</b></label>
+                        <input type="text" placeholder="Enter Address" id="address-input" name="address" required>
+
+                        <div class="clearfix">
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                class="cancelbtn">Cancel</button>
+                            <button type="submit" class="signupbtn">Sign Up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+{{> footer }}

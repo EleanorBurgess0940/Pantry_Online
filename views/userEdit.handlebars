@@ -1,0 +1,119 @@
+{{> header }}
+
+<br>
+<div class="container">
+    <div class="Title, text-center">
+        User management2
+    </div>
+    <div class="editTable">
+        <b>Name: </b> {{user.name}} <button class="edituser-btn btn-lg"
+            onclick="document.getElementById('id04').style.display='block'" style="width:auto;">Edit Name</button>
+        <br>
+        <b>Email: </b> {{user.email}} <button class="edituser-btn btn-lg"
+            onclick="document.getElementById('id05').style.display='block'" style="width:auto;">Edit Email</button>
+        <br>
+        <b>Phone Number: </b> {{user.phoneNumber}} <button class="edituser-btn btn-lg"
+            onclick="document.getElementById('id06').style.display='block'" style="width:auto;">Edit Phone</button>
+        <br>
+        <b>Address: </b> {{user.address}} <button class="edituser-btn btn-lg"
+            onclick="document.getElementById('id07').style.display='block'" style="width:auto;">Edit Address</button>
+        <br>
+        <b>Permission Level: </b>
+        {{#ifEquals user.permissionlevel "1"}} Admin {{/ifEquals}} {{#ifEquals user.permissionlevel "0"}} User
+        {{/ifEquals}} <button class="edituser-btn btn-lg"
+            onclick="document.getElementById('id08').style.display='block'" style="width:auto;">Edit Permission
+            Level</button>
+        <br>
+    </div>
+</div>
+
+
+<div class="col-12">
+    <div id="id04" class="modal">
+        <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate">
+            <div class="container">
+                <label><b>Full Name</b></label>
+                <input type="hidden" value={{user.id}} id="edit-id">
+                <input type="text" value="{{user.name}}" id="name-input" edit-id="{{user.id}}" name="name" required>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id04').style.display='none'"
+                        class="cancelbtn"></button>Cancel</button>
+                    <button type="submit" class="editUsernamebtn" edit-id="{{user.id}}">Submit Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="id05" class="modal">
+        <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate">
+            <div class="container">
+                <label><b>Email</b></label>
+                <input type="text" value="{{user.email}}" id="email-input" name="email" required>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id05').style.display='none'"
+                        class="cancelbtn"></button>Cancel</button>
+                    <button type="submit" class="editUseremailbtn">Submit Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="id06" class="modal">
+        <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate">
+            <div class="container">
+                <label><b>Phone Number</b></label>
+                <input type="text" value="{{user.phoneNumber}}" id="phoneNumber-input" name="phone" required>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id06').style.display='none'"
+                        class="cancelbtn"></button>Cancel</button>
+                    <button type="submit" class="editUserphonebtn">Submit Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="id07" class="modal">
+        <span onclick="document.getElementById('id07').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate">
+            <div class="container">
+                <label><b>Address</b></label>
+                <input type="text" value="{{user.address}}" id="address-input" name="address" required>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id07').style.display='none'"
+                        class="cancelbtn"></button>Cancel</button>
+                    <button type="submit" class="editUseraddressbtn">Submit Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="col-12">
+    <div id="id08" class="modal">
+        <span onclick="document.getElementById('id08').style.display='none'" class="close" title="Close Modal">×</span>
+        <form class="modal-content animate" name="permedit">
+            <div class="container">
+                <label><b>Permission Level</b></label><br>
+                <input type="radio" value="1" name="permissionlevel" {{{setChecked '1' user.permissionlevel}}}>Admin<br>
+                <input type="radio" value="0" name="permissionlevel" {{{setChecked '0' user.permissionlevel}}}>User<br>
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id08').style.display='none'"
+                        class="cancelbtn"></button>Cancel</button>
+                    <button type="submit" id="permission-input" class="editUserpermissionbtn">Submit Edit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{{> footer}}

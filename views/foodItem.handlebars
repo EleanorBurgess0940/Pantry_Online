@@ -1,0 +1,25 @@
+{{> header}}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center"> Available Food</h2>
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Put in Cart</th>
+            </thead>
+            {{#each foodItem }}
+            <tr>
+                <td>{{this.name}} </td>
+                <td>{{this.category}} </td>
+                <td><button type="submit" class="shoppingCart" value={{this.id}} id="{{this.id}}">Put in Cart
+                    </button></td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>
+
+{{>footer }}

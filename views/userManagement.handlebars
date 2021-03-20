@@ -1,0 +1,79 @@
+{{> header }}
+<div class="container">
+    <div class="col-12">
+        <button class="signup-btn btn-lg" onclick="document.getElementById('id01').style.display='block'"
+            style="width:auto;">Add New User</button>
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">×</span>
+            <form class="modal-content animate">
+                <div class="container">
+                    <label><b>Full Name</b></label>
+                    <input type="text" placeholder="Enter Full Name" id="name-input" name="name" required>
+
+
+                    <label><b>Email</b></label>
+                    <input type="text" placeholder="Enter Email" id="email-input" name="email" required>
+
+                    <label><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" id="password-input" name="psw" required>
+
+                    <label><b>Phone Number</b></label>
+                    <input type="text" placeholder="Enter Phone Number" id="phoneNumber-input" name="phoneNumber"
+                        required>
+
+                    <label><b>Address</b></label>
+                    <input type="text" placeholder="Enter Address" id="address-input" name="address" required>
+
+                    <div class="form-group">
+                        <b><label for="role">Role</label></b><br>
+                        <input type="radio" id="radio-1" name="role" value="False" checked> Customer<br>
+                        <input type="radio" id="radio-2" name="role" value="True"> Admin
+                    </div>
+
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                            class="cancelbtn">Cancel</button>
+                        <button type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="Title, text-center">
+        User management
+    </div>
+    <div class="User Table">
+        <table>
+            <thead></thead>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Admin</th>
+            <th>Edit</th>
+            <th>Delete</th>
+
+            </thead>
+            {{#each user }}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.phoneNumber}} </td>
+                <td>{{this.email}} </td>
+                <td>{{this.address}} </td>
+                <td>{{this.admin}} </td>
+                <td><a href="/userEdit/?id={{this.id}}"> Edit </a> </td>
+                <td><button type="submit" class="deleteUserbtn" value={{this.id}} id="{{this.id}}">Delete
+                        {{this.id}}</button></td>
+            </tr>
+            {{/each}}
+        </table>
+
+
+    </div>
+</div>
+
+
+
+
+{{> footer}}

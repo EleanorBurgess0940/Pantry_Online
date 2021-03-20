@@ -1,0 +1,64 @@
+{{> header }}
+<div class="container">
+    <div class="col-12">
+        <button class="signup-btn btn-lg" onclick="document.getElementById('id01').style.display='block'"
+            style="width:auto;">Add Food Item</button>
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">×</span>
+            <form class="modal-content animate">
+                <didiv class="container">
+                    <label><b>Food Title</b></label>
+                    <input type="text" placeholder="Enter food" id="name-input" name="name" required>
+                    <br>
+                    <label><b>Food Catagory</b></label>
+                    <select id="category-input" name="catagory">
+                        <option value="Fruit">Fruit</option>
+                        <option value="Meat">Meat</option>
+                        <option value="Dairy">Dairy</option>
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Breads">Breads</option>
+                        <option value="Pasta">Pasta</option>
+                        <option value="Canned">Canned</option>
+                        <option value="Snacks">Snacks</option>
+                    </select>
+
+                    <div class="clearfix">
+                        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+                            class="cancelbtn">This is supposed to be a Cancle button but it dosn't work</button>
+                        <button type="submit" class="addfoodItembtn">Add Food</button>
+                    </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="Title, text-center">
+    Food Management
+</div>
+<div class="User Table">
+
+    <table class="text-center">
+
+        <thead>
+            <th>Name</th>
+            <th>Delete Item</th>
+        </thead>
+        {{#each foodItem}}
+        <tr>
+            <td>{{this.name}} </td>
+            <td><button type="submit" class="deleteFoodbtn" value={{this.id}} id="{{this.id}}">Delete
+                </button></td>
+        </tr>
+        {{/each}}
+    </table>
+
+
+
+
+</div>
+</div>
+
+
+
+
+{{> footer}}
