@@ -13,7 +13,17 @@ $(document).ready(() => {
 
   $(document).on("click", ".deleteUserbtn", deleteUser);
   $(document).on("click", ".deleteFoodbtn", deleteFoodItem);
-  //$(document).on("click", ".editUserbtn", editUser);
+  $(document).on("click", ".shoppingCartAdd", shoppingCartAdd);
+
+  function shoppingCartAdd() {
+    var listItemData = $(this);
+    var id = listItemData[0].value;
+    console.log("hello");
+    console.log(id);
+    $.post("/api/shoppingCartadd/" + id, {
+      id: id,
+    });
+  }
 
   claimfoodItem = (id) => {
     console.log(id);

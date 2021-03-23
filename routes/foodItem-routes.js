@@ -59,6 +59,45 @@ module.exports = (app) => {
       });
   });
 
+  app.post("/api/shoppingCartadd/:id", (req, res) => {
+    console.log(req.user.id);
+    //
+    db.user
+      .findOne({
+        where: {
+          id: req.user.id,
+        },
+      })
+      .then((dbuser) => {
+        console.log("hello", dbuser.dataValues.shoppingcart);
+        try {
+          if (dbuser.dataValues.shoppingcart == null) {
+            console.log("meow");
+            var cart = req.body.id;
+          } else {
+            dbuser.dataValues.shoppingcart.split(",").forEach(function (item) {
+              if ((item = "req.body.id")) throw "Item already in cart";
+            });
+            console.log("meow1");
+            var cart = dbuser.dataValues.shoppingcart + "," + req.body.id;
+            console.log(cart);
+          }
+          db.user.update(
+            {
+              shoppingcart: cart,
+            },
+            {
+              where: {
+                id: req.user.id,
+              },
+            }
+          );
+        } catch (err) {
+          //TODO Make error pop up if item already in cart
+        }
+      });
+  });
+
   // app.get("add/:id", (req, res) => {
   //   var foodId = req.params.id;
   //   var cart = new cart(req.session.cart ? req.session.cart : {});

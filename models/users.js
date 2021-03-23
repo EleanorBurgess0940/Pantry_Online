@@ -31,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      shoppingcart: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       freezeTableName: true,

@@ -69,3 +69,9 @@ db.sequelize.sync().then(() => {
     console.log("App listening on PORT " + PORT);
   });
 });
+
+//Todo:
+//View cart User
+//view cart admin
+//clear cart
+//delete item from cart
