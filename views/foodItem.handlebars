@@ -1,7 +1,7 @@
 {{> header}}
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-6">
             <h2 class="text-center"> Available Food</h2>
         </div>
         <table>
@@ -9,6 +9,7 @@
                 <th>Name</th>
                 <th>Category</th>
                 <th>Put in Cart</th>
+                <th>Delete from Cart</th>
             </thead>
             {{#each foodItem }}
             <tr>
@@ -16,9 +17,16 @@
                 <td>{{this.category}} </td>
                 <td><button type="submit" class="shoppingCartAdd" value={{this.id}} id="{{this.id}}">Put in Cart
                     </button></td>
+                <td><button type="submit" class="shoppingCartDelete" value={{this.id}} id="{{this.id}}">Delete
+                    </button></td>
             </tr>
             {{/each}}
         </table>
+    </div>
+    <div class="row">
+        <button type="submit" class="shoppingCartComplete" value={{this.id}} id="{{this.id}}">
+            Shopping Cart Complete
+        </button>"
     </div>
 </div>
 

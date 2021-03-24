@@ -75,3 +75,4 @@ db.sequelize.sync().then(() => {
 //view cart admin
 //clear cart
 //delete item from cart
+//Make error pop up if item already in cart

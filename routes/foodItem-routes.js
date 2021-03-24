@@ -60,7 +60,6 @@ module.exports = (app) => {
   });
 
   app.post("/api/shoppingCartadd/:id", (req, res) => {
-    console.log(req.user.id);
     //
     db.user
       .findOne({
@@ -69,19 +68,19 @@ module.exports = (app) => {
         },
       })
       .then((dbuser) => {
-        console.log("hello", dbuser.dataValues.shoppingcart);
         try {
-          if (dbuser.dataValues.shoppingcart == null) {
-            console.log("meow");
+          var cart = dbuser.dataValues.shoppingcart;
+          if (cart == null) {
             var cart = req.body.id;
           } else {
-            dbuser.dataValues.shoppingcart.split(",").forEach(function (item) {
-              if ((item = "req.body.id")) throw "Item already in cart";
+            cart.split(",").forEach(function (item) {
+              if (item == req.body.id) {
+                throw "Item already in cart";
+              }
+              cart = cart + "," + req.body.id;
             });
-            console.log("meow1");
-            var cart = dbuser.dataValues.shoppingcart + "," + req.body.id;
-            console.log(cart);
           }
+
           db.user.update(
             {
               shoppingcart: cart,
@@ -98,15 +97,51 @@ module.exports = (app) => {
       });
   });
 
-  // app.get("add/:id", (req, res) => {
-  //   var foodId = req.params.id;
-  //   var cart = new cart(req.session.cart ? req.session.cart : {});
-  //   var product = products.filter(function (item) {
-  //     return item.id == foodId;
-  //   });
+  app.post("/api/shoppingCartDelete/:id", (req, res) => {
+    console.log(req.user.id);
+    //
 
-  //   cart.add(product[0], foodId);
-  //   req.session.cart = cart;
-  //   res.redirect("/");
-  // });
+    db.user
+      .findOne({
+        where: {
+          id: req.user.id,
+        },
+      })
+      .then((dbuser) => {
+        try {
+          var cart = dbuser.dataValues.shoppingcart;
+          console.log(cart);
+          if (cart == null) {
+            throw "Cart Empty";
+          } else {
+            console.log("cart not empty");
+            var cartupdate = null;
+            cart.split(",").forEach(function (item) {
+              if (item == req.body.id) {
+                console.log("remove this item");
+              } else {
+                if (cartupdate == null) {
+                  cartupdate = item;
+                } else {
+                  cartupdate = "," + item;
+                }
+              }
+            });
+            console.log("cartupdate " + cartupdate);
+            db.user.update(
+              {
+                shoppingcart: cartupdate,
+              },
+              {
+                where: {
+                  id: req.user.id,
+                },
+              }
+            );
+          }
+        } catch (err) {
+          //TODO Make error pop up if item already in cart
+        }
+      });
+  });
 };

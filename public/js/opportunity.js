@@ -14,6 +14,7 @@ $(document).ready(() => {
   $(document).on("click", ".deleteUserbtn", deleteUser);
   $(document).on("click", ".deleteFoodbtn", deleteFoodItem);
   $(document).on("click", ".shoppingCartAdd", shoppingCartAdd);
+  $(document).on("click", ".shoppingCartDelete", shoppingCartDelete);
 
   function shoppingCartAdd() {
     var listItemData = $(this);
@@ -78,6 +79,16 @@ $(document).ready(() => {
     var id = listItemData[0].value;
     console.log(id);
     $.post("/api/deleteuser/" + id, {
+      id: id,
+    });
+    location.reload();
+  }
+
+  function shoppingCartDelete() {
+    var listItemData = $(this);
+    var id = listItemData[0].value;
+    console.log(id);
+    $.post("/api/shoppingCartDelete/" + id, {
       id: id,
     });
     location.reload();
